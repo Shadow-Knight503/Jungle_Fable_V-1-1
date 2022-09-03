@@ -36,7 +36,9 @@ public class DiceCheck : MonoBehaviour {
                 Movement.UpMove();
                 Invoke("MoveMod", Movement.Delay);
             } else {
+                Cam.Focus_Obj = "Player";
                 Movement.Move(DiceSide);
+                Movement.TurnNo = 1;
             }
         }
     }

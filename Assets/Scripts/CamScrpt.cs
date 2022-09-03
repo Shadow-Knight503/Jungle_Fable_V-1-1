@@ -5,6 +5,7 @@ using UnityEngine;
 public class CamScrpt : MonoBehaviour {
 
     public Transform Player;
+    public Transform Ai;
     public Transform DicePlat;
     public Vector3 Offset;
     public string Focus_Obj = "Dice";
@@ -24,6 +25,8 @@ public class CamScrpt : MonoBehaviour {
             transform.position = DicePlat.position + Offset;
         } else if (Focus_Obj == "Player") {
             transform.position = Player.position + Offset;
-        }   
+        } else if (Focus_Obj == "Ai") {
+            transform.position = Ai.position + Offset;
+        }
     }
 }

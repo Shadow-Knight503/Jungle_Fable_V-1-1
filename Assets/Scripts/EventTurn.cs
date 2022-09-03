@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EventTurn : MonoBehaviour {
     public PlayerMove Movement;
+
     float No_Turns;
 
     // Start is called before the first frame update
@@ -16,19 +17,23 @@ public class EventTurn : MonoBehaviour {
 
     }
 
-    void OnTriggerEnter () {
-        Movement.enabled = false;
-        No_Turns = Mathf.Abs(Mathf.Round(((Movement.EndPt.x - Movement.CurtPos.x) / Movement.PosFor)));
-        Debug.Log(No_Turns);
-        Movement.enabled = true;
-        if (Movement.Turned == false) {Movement.Turned = true;}
-        else {Movement.Turned = false;}
-        if (No_Turns >= 1f) {
-            Movement.UpMove();
-            Invoke("MoveInit", Movement.Delay);
-        } else if (No_Turns == 0f) {
-            Movement.OnEnd = true;
-            Debug.Log(Movement.Turned);
+    public void OnTriggerEnter (Collider Col) {
+        if (Col.tag == "RlPlayer" || Col.tag == "AiPlayer") {    
+            Movement.enabled = false;
+            No_Turns = Mathf.Abs(Mathf.Round(((Movement.EndPt.x - Movement.CrtPos.x) / Movement.PosFor)));
+            Movement.enabled = true;
+            if (Movement.Turned == false) {Movement.Turned = true;}
+            else {Movement.Turned = false;}
+            if (No_Turns >= 1f) {
+                Movement.UpMove();
+                Invoke("MoveInit", Movement.Delay);
+            } else if (No_Turns == 0f) {
+                Movement.OnEnd = true;
+            } 
+            if (No_Turns == 1f && Movement.Reverse) {
+                Movement.OnEnd = true;
+            
+            }
         }
     }
 

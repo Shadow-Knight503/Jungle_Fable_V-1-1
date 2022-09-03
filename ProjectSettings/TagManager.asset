@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - TurnIndic
+  - AiPlayer
+  - RlPlayer
   layers:
   - Default
   - TransparentFX

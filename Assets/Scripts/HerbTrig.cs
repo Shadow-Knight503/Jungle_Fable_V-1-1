@@ -18,7 +18,7 @@ public class HerbTrig : MonoBehaviour {
     }
     
     public void OnTriggerStay(Collider Col) {
-        if (Col.tag == "Player" && Movement.CurtPos == Movement.EndPt) {
+        if (Col.tag == "Player" && Movement.CrtPos == Movement.EndPt) {
             Invoke("MoveDelay", 0.5f);
         }
     }
